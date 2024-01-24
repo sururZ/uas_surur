@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}
+List Semua Laporan
+{% endblock %}
+{% block content %}
+        <table border="1px">
+            <thead>
+                <td><strong>No</strong></td>
+                <td><strong>Nama</strong></td>
+                <td><strong>Nim</strong></td>
+                <td><strong>Prodi</strong></td>
+                <td><strong>Pesan</strong></td>
+                <td></td>
+                <td></td>
+            </thead>
+
+            {% for row in rows %}
+            <tr>
+                <td>{{ row["rowid"] }}</td>
+                <td>{{ row["name"] }}</td>
+                <td> {{ row["nim"]}}</td>
+                <td>{{ row["prodi"] }}</td>
+                <td>{{ row["pesan"] }}</td>
+                <td><form action="{{url_for('edit')}}" method="POST"><input type="hidden" name="id" value="{{ row['rowid'] }}"><input type="submit" value="Edit"></form> </td>
+                <td><form onsubmit="return confirm('Yakin akan menghapus Laporan ini dari Database?');" action="{{url_for('delete')}}" method="POST"><input type="hidden" name="id" value="{{ row['rowid'] }}"><input type="submit" value="Delete"></form> </td>
+            </tr>
+            {% endfor %}
+        </table>
+{% endblock %}

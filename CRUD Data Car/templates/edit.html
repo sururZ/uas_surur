@@ -1,0 +1,19 @@
+<h1>Edit Student Record</h1>
+        {% for row in rows %}
+        <form action="{{ url_for('editrec') }}" method="POST">
+            <h3 style="color:blue">No: {{ row['rowid']}}</h3>
+            <input type="hidden" name="rowid" value="{{ row['rowid'] }}">
+            Nama Mobil<br>
+            <input type="text" name="nm" value="{{ row['name'] }}"/><br>
+
+            Tahun<br>
+            <input type="text" name="tahun" value="{{row['tahun']}}"/><br>
+
+            Warna<br>
+            <input type="text" name="warna" value="{{ row['warna'] }}"/><br>
+
+            Tahun<br>
+            <input type="text" name="harga" value="{{ row['harga'] }}"/><br>
+
+            <input type="submit" value="Submit" /><br>
+        </form>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tampilan Data</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <td>Nama Mobil</td>
+            <td>Tahun</td>
+            <td>Warna</td>
+            <td>Harga</td>
+        </thead>
+
+        {% for row in rows %}
+
+        <tr>
+            <td>{{row['name']}}</td>
+            <td>{{row['tahun']}}</td>
+            <td>{{row['warna']}}</td>
+            <td>{{row['harga']}}</td>
+            <td><form action="{{url_for('edit')}}" method="'POST"><input type="hidden" name="id" value="{{row['rowid']}}"><input type="submit" value="Edit"></form></td>
+            <td><form onsubmit="return confirm('Yakin ingin menghapus data ini?');" action="{{url_for('delete')}}" method='POST'><input type="hidden" name="id" value="{{row['row id']}}"><input type="submit" value="Delete"></form></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Kembali</a>
+</body>
+</html>

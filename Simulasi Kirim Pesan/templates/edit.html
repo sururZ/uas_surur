@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}
+Ubah Laporan
+{% endblock %}
+{% block content %}
+        <h1>Ubah Laporan</h1>
+        {% for row in rows %}
+        <form action="{{ url_for('editrec') }}" method="POST">
+            <h3 style="color:blue">Data No: {{ row['rowid']}}</h3>
+            <input type="hidden" name="rowid" value="{{ row['rowid'] }}">
+            Nama<br>
+            <input type="text" name="nm" value="{{ row['name'] }}"/><br>
+
+            Nim<br>
+            <input type="text" name="nim" value="{{row['nim']}}"/><br>
+
+            Prodi<br>
+            <input type="text" name="prodi" value="{{ row['prodi'] }}"/><br>
+
+            Pesan<br>
+            <textarea name="pesan" value="{{ row['pesan'] }}"></textarea><br>
+
+            <input type="submit" value="Submit" /><br>
+        </form>
+        {% endfor %}
+{% endblock %}
